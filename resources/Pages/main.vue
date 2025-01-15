@@ -1,14 +1,16 @@
 <template>
   <v-container class="">
     <v-sheet class="mx-auto" width="300">
-    <v-form fast-fail @submit.prevent>
+    <v-form metod="POST" action="{{ route('store') }}" faast-fail>
       <v-text-field
-        v-model="firstName"
+      name = "name"
+      v-model="firstName"
         :rules="firstNameRules"
         label="Nombre de usuario"
       ></v-text-field>
-      {{ users.user }}
+      <!-- {{ comments[0].name }} -->
       <v-text-field
+        name = "comment"
         v-model="lastName"
         :rules="commentRules"
         label="Comentario"
@@ -29,9 +31,9 @@ import VueTable from './vueTable.vue';
 import { defineProps } from 'vue';
 
   defineProps({
-    users: {
+    comments: {
       type: Object,
-      required: true,
+      required: false,
     }
 });
   const firstName = ref('');

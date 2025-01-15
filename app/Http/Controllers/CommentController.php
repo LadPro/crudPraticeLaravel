@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,10 +13,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $user = [
-            "user"=> "pelotudo"
-        ];
-        return Inertia::render('main', ['users' => $user]);//
+        $comments = Comment::all();
+        return Inertia::render('main', ['comments' => $comments]);//
     }
 
     /**
@@ -31,7 +30,8 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        // dd($request);
     }
 
     /**
